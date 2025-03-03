@@ -541,32 +541,32 @@
           
             // Ambil daftar nama dari Google Apps Script
             fetch(SHEETS_API_URL_INVITATION)
-              .then(response => response.json())
-              .then(allowedNames => {
-                console.log(allowedNames)
-                const urlParams = new URLSearchParams(window.location.search);
-                const inviteName = urlParams.get("invite");
+                .then(response => response.json())
+                .then(allowedNames => {
+                    // console.log(allowedNames)
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const inviteName = urlParams.get("invite");
 
-                const newAllowedNames = allowedNames.map(val => val?.nama)
-          
-                if (!newAllowedNames.includes(inviteName)) {
-                  document.body.innerHTML = `<div style="text-align:center; padding:50px;">
-                    <h2>Maaf, Anda tidak diundang.</h2>
-                    <p>Silakan hubungi penyelenggara untuk informasi lebih lanjut.</p>
-                  </div>`;
-                } else {
-                  // Jika nama valid, sembunyikan loading dan tampilkan konten
-                    document.getElementById("loading").style.display = "none";
-                    document.getElementById("content-body").style.display = "block";
-                }
-              })
-              .catch(error => {
-                // document.body.innerHTML = `<div style="text-align:center; padding:50px;">
-                //   <h2>Gagal memuat data undangan.</h2>
-                //   <p>Silakan coba lagi nanti.</p>
-                // </div>`;
-                // console.error("Error:", error);
-              });
+                    const newAllowedNames = allowedNames.map(val => val?.nama)
+            
+                    if (!newAllowedNames.includes(inviteName)) {
+                    document.body.innerHTML = `<div style="text-align:center; padding:50px;">
+                        <h2>Maaf, Anda tidak diundang.</h2>
+                        <p>Silakan hubungi penyelenggara untuk informasi lebih lanjut.</p>
+                    </div>`;
+                    } else {
+                    // Jika nama valid, sembunyikan loading dan tampilkan konten
+                        document.getElementById("loading").style.display = "none";
+                        document.getElementById("content-body").style.display = "block";
+                    }
+                })
+                .catch(error => {
+                    // document.body.innerHTML = `<div style="text-align:center; padding:50px;">
+                    //   <h2>Gagal memuat data undangan.</h2>
+                    //   <p>Silakan coba lagi nanti.</p>
+                    // </div>`;
+                    // console.error("Error:", error);
+                });
           </script>
           
 
