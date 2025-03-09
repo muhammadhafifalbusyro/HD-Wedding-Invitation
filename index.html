@@ -19,6 +19,16 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body >
+        <script>
+            function checkScreenSize() {
+                if (window.innerWidth > 576) {
+                    alert("Website ini hanya bisa diakses melalui perangkat HP.");
+                }
+            }
+            checkScreenSize();
+            window.addEventListener("resize", checkScreenSize);
+        </script>
+        
         <div id="loading" style="text-align:center; padding:50px;">
             <h2>Memuat undangan...</h2>
             <p>Mohon tunggu sebentar.</p>
